@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
 import pickle
-
+import os
 app=Flask(__name__)
+model_path = os.path.join(os.path.dirname(__file__), 'gwp.pkl')
 
-model = pickle.load(open('gwp.pkl', 'rb'))
+model = pickle.load(open(model_path, 'rb'))
 
 @app.route("/")
 def about():
